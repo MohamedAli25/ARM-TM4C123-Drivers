@@ -1,9 +1,13 @@
 #ifndef _PIN_H
 #define _PIN_H
 
+#include "common.h"
+
+#define I2C_F 0x03
+#define UART_F 0x02
+
 #define UNLOCK 0x4C4F434B
 #define PORT_OFFSET 0x3FC
-#include "common.h"
 
 typedef enum PIN_Port
 {

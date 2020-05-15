@@ -5,15 +5,12 @@
 #include "../common.h"
 #include "../pin.h"
 
-// #define I2C_F					0x03
-// #define UART_F					0x02
-
-typedef enum InterruptEvent
+typedef enum GPIO_InterruptEvent
 {
 	RISING,
 	FALLING,
 	BOTH,
-} InterruptEvent;
+} GPIO_InterruptEvent;
 
 typedef struct GPIO_PinConfig
 {

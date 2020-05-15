@@ -20,6 +20,7 @@
 #define SYSCTL_RCGCGPIO_REG (*(volatile uint32_t *const)0x400FE608)
 #define NVIC_EN0_REG (*(volatile uint32_t *const)0xE000E100)
 #define RCGC2_REG (*(volatile uint32_t *const)0x400FE108)
+#define NVIC_EN0 (*((volatile uint32_t *const)0xE000E100))
 
 #define HIGH 0xFF
 #define LOW 0x00

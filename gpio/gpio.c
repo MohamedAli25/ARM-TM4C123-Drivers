@@ -25,7 +25,7 @@ uint8_t GPIO_readPin(PIN_Port port, PIN_Pin pin)
 
 void GPIO_writePin(PIN_Port port, PIN_Pin pin, uint8_t value)
 {
-	Memory(port, (PIN_Pin << 2)) = value;
+	Memory(port, (pin << 2)) = value;
 }
 
 void GPIO_initPort(GPIO_PinConfig *config)
@@ -54,7 +54,7 @@ void GPIO_setPulldown(PIN_Port port, PIN_Pin pin)
 	PIN_setPulldown(port, pin);
 }
 
-void GPIO_initInterrupt(PIN_Port port, PIN_Pin pin, InterruptEvent ev, void (*callback)())
+void GPIO_initInterrupt(PIN_Port port, PIN_Pin pin, GPIO_InterruptEvent ev, void (*callback)())
 {
 	GPIO_setClkSource(port);
 	Memory(port, IS) &= ~(pin);
@@ -77,27 +77,27 @@ void GPIO_initInterrupt(PIN_Port port, PIN_Pin pin, InterruptEvent ev, void (*ca
 	switch (port)
 	{
 	case PORTA:
-		(*NVIC_EN0) |= (1 << 0);
+		NVIC_EN0 |= (1 << 0);
 		callbackTable[0][Log(pin)] = callback;
 		break;
 	case PORTB:
-		(*NVIC_EN0) |= (1 << 1);
+		NVIC_EN0 |= (1 << 1);
 		callbackTable[1][Log(pin)] = callback;
 		break;
 	case PORTC:
-		(*NVIC_EN0) |= (1 << 2);
+		NVIC_EN0 |= (1 << 2);
 		callbackTable[2][Log(pin)] = callback;
 		break;
 	case PORTD:
-		(*NVIC_EN0) |= (1 << 3);
+		NVIC_EN0 |= (1 << 3);
 		callbackTable[3][Log(pin)] = callback;
 		break;
 	case PORTE:
-		(*NVIC_EN0) |= (1 << 4);
+		NVIC_EN0 |= (1 << 4);
 		callbackTable[4][Log(pin)] = callback;
 		break;
 	case PORTF:
-		(*NVIC_EN0) |= (1 << 30);
+		NVIC_EN0 |= (1 << 30);
 		callbackTable[5][Log(pin)] = callback;
 		break;
 	}
