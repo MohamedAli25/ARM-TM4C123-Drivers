@@ -76,7 +76,7 @@ void PIN_initPin(const PIN_PinConfig *const pinConfig)
 
 void PIN_initPort(const PIN_PortConfig *const portConfig)
 {
-    GPIO_setClkSource(portConfig->port);
+    PIN_setClkSource(portConfig->port);
     Memory(portConfig->port, LCK) = UNLOCK;
     Memory(portConfig->port, CR) = 0xFF;
     Memory(portConfig->port, DEN) = 0xFF;
@@ -86,36 +86,36 @@ void PIN_initPort(const PIN_PortConfig *const portConfig)
     Memory(portConfig->port, DIR) = portConfig->dir;
 }
 
-void GPIO_setPullup(PIN_Port port, PIN_Pin pin)
+void PIN_setPullup(PIN_Port port, PIN_Pin pin)
 {
     Memory(port, PUR) |= pin;
 }
 
-void GPIO_setPulldown(PIN_Port port, PIN_Pin pin)
+void PIN_setPulldown(PIN_Port port, PIN_Pin pin)
 {
     Memory(port, PDR) |= pin;
 }
 
-void GPIO_setPCTL(PIN_Port port, PIN_Pin pin, uint8_t function)
+void PIN_setPCTL(PIN_Port port, PIN_Pin pin, uint8_t function)
 {
     // TODO: must clarify this line
     Memory(port, PCTL) = (Memory(port, PCTL) & (~(0x0000000F << (Log(pin) * 4)))) | (function << ((Log(pin) * 4)));
 }
 
-void GPIO_setOpenDrain(PIN_Port port, PIN_Pin pin)
+void PIN_setOpenDrain(PIN_Port port, PIN_Pin pin)
 {
     Memory(port, ODR) |= pin;
 }
 
-void GPIO_setDrive2m(PIN_Port port, PIN_Pin pin)
+void PIN_setDrive2m(PIN_Port port, PIN_Pin pin)
 {
     Memory(port, DRV2M) |= pin;
 }
-void GPIO_setDrive4m(PIN_Port port, PIN_Pin pin)
+void PIN_setDrive4m(PIN_Port port, PIN_Pin pin)
 {
     Memory(port, DRV4M) |= pin;
 }
-void GPIO_setDrive8m(PIN_Port port, PIN_Pin pin)
+void PIN_setDrive8m(PIN_Port port, PIN_Pin pin)
 {
     Memory(port, DRV8M) |= pin;
 }

@@ -28,7 +28,7 @@ void GPIO_writePin(PIN_Port port, PIN_Pin pin, uint8_t value)
 	Memory(port, (pin << 2)) = value;
 }
 
-void GPIO_initPort(GPIO_PinConfig *config)
+void GPIO_initPort(GPIO_PortConfig *config)
 {
 	PIN_PortConfig portConfig = {config->port, config->dir};
 	PIN_initPort(&portConfig);

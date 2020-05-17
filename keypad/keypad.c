@@ -21,10 +21,10 @@ void KEYPAD_init(void)
     GPIO_setPullup(KEYPAD_ROW_PORT, PIN5);
     GPIO_setPullup(KEYPAD_ROW_PORT, PIN6);
     GPIO_setPullup(KEYPAD_ROW_PORT, PIN7);
-    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN4);
-    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN5);
-    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN6);
-    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN7);
+//    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN4);
+//    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN5);
+//    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN6);
+//    GPIO_setOpenDrain(KEYPAD_ROW_PORT, PIN7);
 
     GPIO_PinConfig pinConfig2 = {KEYPAD_COL_PORT, PIN1, DIGITAL, OUTPUT};
     GPIO_initPin(&pinConfig2);
@@ -34,13 +34,13 @@ void KEYPAD_init(void)
     GPIO_initPin(&pinConfig2);
     pinConfig2.pin = PIN4;
     GPIO_initPin(&pinConfig2);
-    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN1);
-    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN2);
-    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN3);
-    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN4);
+//    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN1);
+//    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN2);
+//    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN3);
+//    GPIO_setOpenDrain(KEYPAD_COL_PORT, PIN4);
 }
 
-char KEYPAD_getInput(void)
+uint8_t KEYPAD_getInput(void)
 {
     int col;
     while (1)

@@ -13,8 +13,7 @@
 #define UART_BUFFER_SIZE 64
 #define BAUD_IDIV(B) (int)(CLK_SPEED / (16 * B))
 #define BAUD_FDIV(B) (int)(((CLK_SPEED / (16 * B)) - BAUD_IDIV(B)) * 64)
-#define UART_CLK ((volatile uint32_t *)0x400FE618)
-#define RCGC2_REG ((volatile uint32_t *)0x400FE108) //really don't know why we are using this
+#define UART_CLK (*((volatile uint32_t *)0x400FE618))
 
 typedef enum UART_Uart
 {

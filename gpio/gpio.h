@@ -34,6 +34,6 @@ uint8_t GPIO_readPort(PIN_Port port);
 void GPIO_writePort(PIN_Port port, uint8_t value);
 void GPIO_setPullup(PIN_Port port, PIN_Pin pin);
 void GPIO_setPulldown(PIN_Port port, PIN_Pin pin);
-void GPIO_initInterrupt(PIN_Port port, PIN_Pin pin, InterruptEvent ev, void (*callback)());
+void GPIO_initInterrupt(PIN_Port port, PIN_Pin pin, GPIO_InterruptEvent ev, void (*callback)());
 
 #endif
